@@ -3,6 +3,7 @@ import java.util.Scanner;
 import java.io.File;
 
 public class Day6 {
+  // check if all element in char[] are different and initialised.
   public static boolean checkDiff(char[] charL) {
     for (int i = 0; i < charL.length; ++i) {
       if (charL[i] == '\0') {

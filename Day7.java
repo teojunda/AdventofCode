@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.io.File;
 
 public class Day7 {
+  // my own readLine to incorporate try catch
   public static String myRead(Scanner scanner) {
     String line;
     try {
