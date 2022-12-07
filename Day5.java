@@ -2,6 +2,7 @@ import java.io.*;
 
 public class Day5 {
   public static void main(String[] args) {
+
     Console cnsl = System.console();
     Stack[] stacks = new Stack[9];
     for (int i = 0; i < 9; ++i) {
