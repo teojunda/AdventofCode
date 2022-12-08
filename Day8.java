@@ -56,15 +56,11 @@ public class Day8 {
 
     // Part 2 Solution
     int maxScore = 0;
-    int posRow = 0;
-    int posCol = 0;
     for (int i = 0; i < 150; ++i) {
       for (int j = 0; j < 150; ++j) {
         int tmp = getScore(input, i, j);
 	if (tmp > maxScore) {
 	  maxScore = tmp;
-	  posRow = i;
-	  posCol = j;
 	}
       }
     }
