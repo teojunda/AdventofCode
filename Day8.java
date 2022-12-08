@@ -39,6 +39,7 @@ public class Day8 {
       }
     }
 
+    // Reading tree heights into a 2d array
     String line;
     int lineCount = 0;
     while ((line = myRead(scanner)) != null) {
@@ -49,8 +50,68 @@ public class Day8 {
       ++lineCount;
     }
 
+    // Part 1 solution
     int visTrees = numVisible(input);
     System.out.println("num of visible trees: " + visTrees);
+
+    // Part 2 Solution
+    int maxScore = 0;
+    int posRow = 0;
+    int posCol = 0;
+    for (int i = 0; i < 150; ++i) {
+      for (int j = 0; j < 150; ++j) {
+        int tmp = getScore(input, i, j);
+	if (tmp > maxScore) {
+	  maxScore = tmp;
+	  posRow = i;
+	  posCol = j;
+	}
+      }
+    }
+    System.out.println("max score is: " + maxScore);
+  }
+
+  public static int getScore(int[][] input, int row, int col) {
+    int top, down, left, right;
+    top = down = left = right = 0;
+    int height = input[row][col];
+    for (int i = row - 1; i >= 0; --i) {
+      if (input[i][col] == -1) {
+        break;
+      }
+      ++left;
+      if (height <= input[i][col]) {
+        break;
+      }
+    }
+    for (int i = row + 1; i < 150 ; ++i) {
+      if (input[i][col] == -1) {
+        break;
+      }
+      ++right;
+      if (height <= input[i][col]) {
+        break;
+      }
+    }
+    for (int i = col - 1; i >= 0; --i) {
+      if (input[row][i] == -1) {
+        break;
+      }
+      ++top;
+      if (height <= input[row][i]) {
+        break;
+      }
+    }
+    for (int i = col + 1; i < 150; ++i) {
+      if (input[row][i] == -1) {
+        break;
+      }
+      ++down;
+      if (height <= input[row][i]) {
+        break;
+      }
+    }
+    return top * down * left * right;
   }
 
   public static int numVisible(int[][] input) {
